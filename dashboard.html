@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Attendance Dashboard</title>
+
+<style>
+    body { background:#eef4ff; font-family:Arial; margin:0; }
+    h1 { background:#0a74ff; padding:20px; color:white; text-align:center; margin:0; }
+    .nav { text-align:center; padding:10px; background:#f0f5ff; }
+    .nav button {
+        padding:10px 18px; background:#d9e8ff;
+        border:none; border-radius:8px; margin:5px; cursor:pointer;
+    }
+    .container { width:90%; margin:auto; margin-top:20px; }
+    .stats { display:flex; gap:20px; }
+    .statBox {
+        flex:1; background:#d9e8ff; padding:20px;
+        border-radius:10px; text-align:center; font-size:20px;
+    }
+    .card {
+        background:white; padding:20px; border-radius:10px;
+        box-shadow:0 0 10px rgba(0,0,0,0.15); margin-top:20px;
+    }
+</style>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const firebaseConfig = {
+    apiKey: "AIzaSyDUrMm2ExlhcSpQ1-sROzy_7oIY4mpu3Eo",
+    authDomain: "smart-attendance-ai-4bc4f.firebaseapp.com",
+    databaseURL: "https://smart-attendance-ai-4bc4f-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "smart-attendance-ai-4bc4f",
+    storageBucket: "smart-attendance-ai-4bc4f.appspot.com",
+    messagingSenderId: "267157518712",
+    appId: "1:267157518712:web:2404a9cab8d7e0d522b08d"
+};
+firebase.initializeApp(firebaseConfig);
+</script>
+
+<script defer src="dashboard.js"></script>
+
+</head>
+
+<body>
+
+<h1>Attendance Dashboard</h1>
+
+<div class="nav">
+    <button onclick="window.location='index.html'">Home</button>
+    <button onclick="window.location='attendance.html'">Attendance</button>
+    <button onclick="logout()">Logout</button>
+</div>
+
+<div class="container">
+
+    <div class="stats">
+        <div class="statBox">
+            <b id="totalDays">0</b><br>Total Days
+        </div>
+        <div class="statBox">
+            <b id="avgAttendance">0%</b><br>Average Attendance
+        </div>
+        <div class="statBox">
+            <b id="topStudent">-</b><br>Top Student
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Attendance Trend</h2>
+        <canvas id="trendChart" height="100"></canvas>
+    </div>
+
+</div>
+
+</body>
+</html>

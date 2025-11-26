@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Attendance Records</title>
+
+<style>
+    body { background:#eef4ff; font-family:Arial; margin:0; }
+    h1 { background:#0a74ff; padding:20px; color:white; text-align:center; margin:0; }
+    .nav { text-align:center; padding:10px; background:#f0f5ff; }
+    .nav button {
+        padding:8px 15px;
+        background:#d9e8ff;
+        border:none;
+        margin:5px;
+        border-radius:8px;
+        cursor:pointer;
+    }
+    .container { width:90%; margin:auto; margin-top:20px; }
+    .card {
+        background:white; padding:20px; border-radius:10px;
+        box-shadow:0 0 10px rgba(0,0,0,0.15); margin-top:20px;
+    }
+    table { width:100%; border-collapse:collapse; margin-top:10px; }
+    th, td {
+        border:1px solid #cbd7f0;
+        padding:10px; background:#e9f1ff;
+    }
+</style>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+<script>
+const firebaseConfig = {
+    apiKey: "AIzaSyDUrMm2ExlhcSpQ1-sROzy_7oIY4mpu3Eo",
+    authDomain: "smart-attendance-ai-4bc4f.firebaseapp.com",
+    databaseURL: "https://smart-attendance-ai-4bc4f-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "smart-attendance-ai-4bc4f",
+    storageBucket: "smart-attendance-ai-4bc4f.appspot.com",
+    messagingSenderId: "267157518712",
+    appId: "1:267157518712:web:2404a9cab8d7e0d522b08d"
+};
+firebase.initializeApp(firebaseConfig);
+</script>
+
+<script defer src="attendance.js"></script>
+
+</head>
+
+<body>
+
+<h1>Attendance Records</h1>
+
+<div class="nav">
+    <button onclick="window.location='index.html'">Home</button>
+    <button onclick="window.location='dashboard.html'">Dashboard</button>
+    <button onclick="logout()">Logout</button>
+</div>
+
+<div class="container">
+    <div class="card">
+        <h2>All Attendance</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Student Name</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="attendanceTable"></tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
